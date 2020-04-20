@@ -1,26 +1,26 @@
 ---
-title: Production Deployment
+title: نشر الإنتاج
 type: guide
 order: 404
 ---
 
-> Most of the tips below are enabled by default if you are using [Vue CLI](https://cli.vuejs.org). This section is only relevant if you are using a custom build setup.
+> يتم تمكين معظم النصائح أدناه افتراضيًا إذا كنت تستخدم [Vue CLI](https://cli.vuejs.org). هذا القسم مناسب فقط إذا كنت تستخدم إعداد بناء مخصص.
 
-## Turn on Production Mode
+## تشغيل وضع الإنتاج
 
-During development, Vue provides a lot of warnings to help you with common errors and pitfalls. However, these warning strings become useless in production and bloat your app's payload size. In addition, some of these warning checks have small runtime costs that can be avoided in production mode.
+أثناء التطوير، تقدم Vue الكثير من التحذيرات لمساعدتك في الأخطاء والمخاطر الشائعة. ومع ذلك، فإن سلاسل التحذير هذه تصبح غير مجدية في الإنتاج وتُضَخم حجم حمولة التطبيق. بالإضافة إلى ذلك، تحتوي بعض عمليات التحقق من التحذيرات هذه على تكاليف وقت تشغيل صغيرة يمكن تجنبها في وضع الإنتاج.
 
-### Without Build Tools
+### دون أدوات البناء
 
-If you are using the full build, i.e. directly including Vue via a script tag without a build tool, make sure to use the minified version (`vue.min.js`) for production. Both versions can be found in the [Installation guide](installation.html#Direct-lt-script-gt-Include).
+إذا كنت تستخدم البنية الكاملة، أي تضمين Vue مباشرة عبر علامة البرنامج النصي بدون أداة إنشاء، تأكد من استخدام الإصدار المصغر (`vue.min.js`) للإنتاج. يمكن العثور على كلا الإصدارين في [دليل التثبيت](installation.html#Direct-lt-script-gt-Include).
 
-### With Build Tools
+### مع أدوات البناء
 
-When using a build tool like Webpack or Browserify, the production mode will be determined by `process.env.NODE_ENV` inside Vue's source code, and it will be in development mode by default. Both build tools provide ways to overwrite this variable to enable Vue's production mode, and warnings will be stripped by minifiers during the build. All `vue-cli` templates have these pre-configured for you, but it would be beneficial to know how it is done:
+عند استخدام أداة إنشاء مثل Webpack أو Browserify، سيتم تحديد وضع الإنتاج بواسطة `process.env.NODE_ENV` داخل شفرة مصدر Vue، وسيكون في وضع التطوير افتراضيًا. توفر كلتا أدوات التصميم طرقًا للاستبدال هذا المتغير لتمكين وضع الإنتاج الخاص بـ Vue، وسيتم تجريد التحذيرات بواسطة المصغرات أثناء الإنشاء. تحتوي جميع قوالب `vue-cli` على هذه التكوينات المسبقة لك، لكن سيكون من المفيد معرفة كيفية القيام بذلك:
 
 #### Webpack
 
-In Webpack 4+, you can use the `mode` option:
+في Webpack 4+، يمكنك استخدام خيار `mode`:
 
 ``` js
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
 }
 ```
 
-But in Webpack 3 and earlier, you'll need to use [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
+ولكن في Webpack 3 والإصدارات السابقة، ستحتاج إلى استخدام [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
 ``` js
 var webpack = require('webpack')
@@ -46,15 +46,15 @@ module.exports = {
 
 #### Browserify
 
-- Run your bundling command with the actual `NODE_ENV` environment variable set to `"production"`. This tells `vueify` to avoid including hot-reload and development related code.
+- قم بتشغيل أمر التجميع باستخدام متغير البيئة `NODE_ENV` الفعلي الذي تم تعيينه على "الإنتاج". هذا يخبر `vueify` لتجنب  إعادة التحميل الساخنة وشفرة التطوير ذات الصلة.
 
-- Apply a global [envify](https://github.com/hughsk/envify) transform to your bundle. This allows the minifier to strip out all the warnings in Vue's source code wrapped in env variable conditional blocks. For example:
+- قم بتطبيق تحويل [envify](https://github.com/hughsk/envify) إلى الحزمة الخاصة بك. يسمح هذا لجهاز المصغر بتجميع كافة التحذيرات في شفرة مصدر Vue ملفوفة في كتل شرطية متغير env. فمثلا:
 
   ``` bash
   NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
   ```
 
-- Or, using [envify](https://github.com/hughsk/envify) with Gulp:
+- أو باستخدام [envify](https://github.com/hughsk/envify) مع Gulp:
 
   ``` js
   // Use the envify custom module to specify environment variables
@@ -70,7 +70,7 @@ module.exports = {
     .bundle()
   ```
 
-- Or, using [envify](https://github.com/hughsk/envify) with Grunt and [grunt-browserify](https://github.com/jmreidy/grunt-browserify):
+- أو باستخدام [envify](https://github.com/hughsk/envify) مع Grunt و [grunt-browserify](https://github.com/jmreidy/grunt-browserify):
 
   ``` js
   // Use the envify custom module to specify environment variables
@@ -95,7 +95,7 @@ module.exports = {
 
 #### Rollup
 
-Use [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
+استخدم [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
 
 ``` js
 const replace = require('rollup-plugin-replace')
@@ -110,24 +110,24 @@ rollup({
 }).then(...)
 ```
 
-## Pre-Compiling Templates
+## التجميع المسبق للقوالب
 
-When using in-DOM templates or in-JavaScript template strings, the template-to-render-function compilation is performed on the fly. This is usually fast enough in most cases, but is best avoided if your application is performance-sensitive.
+عند استخدام القوالب داخل DOM أو سلاسل قوالب JavaScript، يتم تنفيذ التصيير من القالب إلى function أثناء التنقل. عادة ما يكون هذا سريعًا في معظم الحالات، ولكن من الأفضل تجنبه إذا كان التطبيق الخاص بك حساسًا للأداء.
 
-The easiest way to pre-compile templates is using [Single-File Components](single-file-components.html) - the associated build setups automatically performs pre-compilation for you, so the built code contains the already compiled render functions instead of raw template strings.
+إن أسهل طريقة لإعداد القوالب المسبقة هي استخدام [Single-File Components](single-file-components.html) - تقوم إعدادات الإنشاء المرتبطة تلقائيًا بإجراء التحويل المسبق نيابة عنك، وبالتالي فإن الشفرة المدمجة تحتوي على وظائف التصيير المترجمة بالفعل بدلاً من سلاسل قالب الخام.
 
-If you are using Webpack, and prefer separating JavaScript and template files, you can use [vue-template-loader](https://github.com/ktsn/vue-template-loader), which also transforms the template files into JavaScript render functions during the build step.
+إذا كنت تستخدم Webpack، وتفضل فصل ملفات JavaScript والقالب، فيمكنك استخدام [vue-template-loader](https://github.com/ktsn/vue-template-loader)، والذي يحول أيضًا ملفات القوالب إلى JavaScript تقديم وظائف خلال خطوة البناء.
 
-## Extracting Component CSS
+## استخراج مكون CSS
 
-When using Single-File Components, the CSS inside components are injected dynamically as `<style>` tags via JavaScript. This has a small runtime cost, and if you are using server-side rendering it will cause a "flash of unstyled content". Extracting the CSS across all components into the same file will avoid these issues, and also result in better CSS minification and caching.
+عند استخدام مكونات أحادية الملف، يتم حقن المكونات الداخلية لـ CSS ديناميكيًا كعلامات `<style>` عبر JavaScript. هذا له تكلفة تشغيل صغيرة، وإذا كنت تستخدم التجسيد من جانب الخادم، فسيؤدي ذلك إلى "flash لمحتوى غير منسق". سيتسبب استخراج CSS عبر جميع المكونات في نفس الملف في تجنب هذه المشكلات، كما يؤدي إلى تحسين CSS وتخزينها مؤقتًا.
 
-Refer to the respective build tool documentations to see how it's done:
+ارجع إلى وثائق أداة الإنشاء المعنية لترى كيف يتم ذلك:
 
 - [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) (the `vue-cli` webpack template has this pre-configured)
 - [Browserify + vueify](https://github.com/vuejs/vueify#css-extraction)
 - [Rollup + rollup-plugin-vue](https://vuejs.github.io/rollup-plugin-vue/#/en/2.3/?id=custom-handler)
 
-## Tracking Runtime Errors
+## تتبع أخطاء وقت التشغيل
 
-If a runtime error occurs during a component's render, it will be passed to the global `Vue.config.errorHandler` config function if it has been set. It might be a good idea to leverage this hook together with an error-tracking service like [Sentry](https://sentry.io), which provides [an official integration](https://sentry.io/for/vue/) for Vue.
+إذا حدث خطأ في وقت التشغيل أثناء تصيير أحد المكونات، فسيتم تمريره إلى وظيفة التكوين `Vue.config.errorHandler` العالمية إذا تم تعيينها. قد تكون فكرة جيدة الاستفادة من هذا الخطاف مع خدمة تتبع الأخطاء مثل [Sentry](https://sentry.io) ، والتي توفر [تكاملًا رسميًا](https://sentry.io/for/vue/) ل Vue.

@@ -1,12 +1,12 @@
 ---
-title: The Vue Instance
+title: كائن Vue
 type: guide
 order: 3
 ---
 
-## Creating a Vue Instance
+## إنشاء كائن Vue
 
-Every Vue application starts by creating a new **Vue instance** with the `Vue` function:
+كل تطبيق Vue يبدأ بإنشاء **كائن Vue** ويتم إنشائه بإستخدام الدالة `Vue`:
 
 ```js
 var vm = new Vue({
@@ -14,28 +14,30 @@ var vm = new Vue({
 })
 ```
 
-Although not strictly associated with the [MVVM pattern](https://en.wikipedia.org/wiki/Model_View_ViewModel), Vue's design was partly inspired by it. As a convention, we often use the variable `vm` (short for ViewModel) to refer to our Vue instance.
+على الرغم من عدم ارتباطه بشكل وثيق بـ[نمط MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel)، فقد استلهم تصميم Vue جزئياً من ذلك. وكقاعدة عامة، غالباً ما نستخدم المتغير `vm` (اختصاراً لـViewModel) للإشارة الى كائن Vue.
 
-When you create a Vue instance, you pass in an **options object**. The majority of this guide describes how you can use these options to create your desired behavior. For reference, you can also browse the full list of options in the [API reference](../api/#Options-Data).
+عندما تقوم بإنشاء كائن Vue، يجب عليك تمرير كائن يحتوي على الخيارات **options object**. أغلب هذا الدليل يشرح كيف نستطيع استخدام هذه الخيارات لإنشاء والتحكم في السلوك المرغوب فيه. وكمرجع، يمكنك تصفح القائمة الكاملة للخيارات المتاحة في صفحة [مرجع API](../api/#Options-Data).
 
-A Vue application consists of a **root Vue instance** created with `new Vue`, optionally organized into a tree of nested, reusable components. For example, a todo app's component tree might look like this:
+تطبيق Vue يتكون من **كائن Vue رئيسي** والذي يتم إنشائه من خلال `new Vue`، منظم بشكل إختياري في هئية شجرة من المكونات المتداخلة والقابلة لإعادة الاستخدام. على سبيل المثال، شجرة المكونات لتطبيق المهام `Todo App` قد تبدو على النحو الآتي:
 
 ```
-Root Instance
-└─ TodoList
-   ├─ TodoItem
-   │  ├─ DeleteTodoButton
-   │  └─ EditTodoButton
-   └─ TodoListFooter
-      ├─ ClearTodosButton
-      └─ TodoListStatistics
+Root Instance---------------------> المكون الرئيسي
+└─ TodoList-----------------------> مكون فرعي  من المكون الرئيسي
+   ├─ TodoItem--------------------> TodoList مكون فرعي من
+   │  ├─ DeleteTodoButton---------> TodoItem مكون فرعي من
+   │  └─ EditTodoButton-----------> TodoItem مكون فرعي من
+   └─ TodoListFooter--------------> TodoList مكون فرعي من
+      ├─ ClearTodosButton---------> TodoListFooter مكون فرعي من
+      └─ TodoListStatistics-------> TodoListFooter مكون فرعي من
 ```
 
-We'll talk about [the component system](components.html) in detail later. For now, just know that all Vue components are also Vue instances, and so accept the same options object (except for a few root-specific options).
+سوف نتحدث عن [نظام المكونات](components.html) بالتفصيل لاحقاً. الان، يجب فقط ان تعرف ان جميع المكونات في Vue هي أيضاً نماذج من كائن Vue، وتبقل أيضاً نفس كائن الخيارات (بإستثناء بعض الخيارات الخاصة بالمكون الرئيسي).
 
-## Data and Methods
+## كائن البيانات و الدوال
 
-When a Vue instance is created, it adds all the properties found in its `data` object to Vue's **reactivity system**. When the values of those properties change, the view will "react", updating to match the new values.
+من ضمن الخيارات التي نقوم بإمدادها إلى كائن Vue هي الكائن `data` والذي يحتوي على الخصائص والبيانات الخاصة بالمكون.
+
+عندما يتم إنشاء كائن Vue، يقوم بإضافة جميع الخصائص الموجودة في كائن الخيارات المسمى `data` إلى **نظام التفاعل**  الخاص بـVue. وعندما يتم تغيير القيم الخاصة بهذه الخصائص، سيتم التفاعل في واجهة المستخدم لتحديث القيم إلى القيم الجديدة.
 
 ```js
 // Our data object
@@ -60,13 +62,13 @@ data.a = 3
 vm.a // => 3
 ```
 
-When this data changes, the view will re-render. It should be noted that properties in `data` are only **reactive** if they existed when the instance was created. That means if you add a new property, like:
+عندما يتم تغيير هذه البيانات، سوف تقوم واجهة المستخدم بالتحديث. يجب الإنتباه إلى ان الخصائص المتواجدة في كائن البيانات `data` تصبح **تفاعلية** فقط عندما يتم إضافتها داخل كائن Vue عن إنشائه. هذا يعني انه اذا قمت على سبيل المثال بإضافة الخاصية بالشكل التالي:
 
 ```js
 vm.b = 'hi'
 ```
 
-Then changes to `b` will not trigger any view updates. If you know you'll need a property later, but it starts out empty or non-existent, you'll need to set some initial value. For example:
+عندها التغييرات التي حدثت على الخاصية `b` لن تفعل اي تحديث في الواجهة. إذا كنت تعرف انك ستحتاج إلى خاصية ما لاحثاً، يجب عليك ان تضعها في كائن `data` وإعطائها قيمة مبدئية حتى وان كانت قيمة فارغة. على سبيل المثال:
 
 ```js
 data: {
@@ -78,7 +80,7 @@ data: {
 }
 ```
 
-The only exception to this being the use of `Object.freeze()`, which prevents existing properties from being changed, which also means the reactivity system can't _track_ changes.
+الاستثناء الوحيد لهذه القاعدة هو استخدام الدالة `Object.freeze()`، والتي تمنع الخصائص الحالية من التغيير، والذي يعني ايضاً ان نظام التفاعل لن يستطيع _تتبع_ التغييرات.
 
 ```js
 var obj = {
@@ -101,7 +103,7 @@ new Vue({
 </div>
 ```
 
-In addition to data properties, Vue instances expose a number of useful instance properties and methods. These are prefixed with `$` to differentiate them from user-defined properties. For example:
+بالاضافة الى خصائص البيانات `data`، كائنات Vue تقوم بتوفير عدد من الخصائص والدوال المفيدة. هذه الخصائص والدوال يتم بدئها ب `$` للتفرقة بينها وبين الخصائص المعرفة من قبل المستخدم. على سبيل المثال:
 
 ```js
 var data = { a: 1 }
@@ -119,15 +121,15 @@ vm.$watch('a', function (newValue, oldValue) {
 })
 ```
 
-In the future, you can consult the [API reference](../api/#Instance-Properties) for a full list of instance properties and methods.
+في المستقبل، يمكنك استشارة [دليل API](../api/#Instance-Properties) لقائمة كاملة بكل الخصائص والدوال المتاحة من قبل كائن Vue.
 
-## Instance Lifecycle Hooks
+## خطافات دورة حياة الكائن
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/understanding-the-vuejs-lifecycle-hooks?friend=vuejs" target="_blank" rel="noopener" title="Free Vue.js Lifecycle Hooks Lesson">Watch a free lesson on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/understanding-the-vuejs-lifecycle-hooks?friend=vuejs" target="_blank" rel="noopener" title="درس مجاني عن خطافات دورة حياة Vue.js">مشاهدة الدرس المجاني على Vue School</a></div>
 
-Each Vue instance goes through a series of initialization steps when it's created - for example, it needs to set up data observation, compile the template, mount the instance to the DOM, and update the DOM when data changes. Along the way, it also runs functions called **lifecycle hooks**, giving users the opportunity to add their own code at specific stages.
+كل كائن Vue يمر عبر سلسلة من خطوات التهيئة عندما يتم إنشائه - على سبيل المثال، يحتاج الى اعداد مراقبة للبيانات، تجميع القالب، تركيب الكائن على DOM و تحديث DOM عند تغيير البيانات. على طول الطريق، يعمل أيضاً على تشغيل وظائف تسمى **خطافات دورة الحياة** ، مما يتيح للمستخدمين الفرصة لإضافة التعليمات البرمجية الخاصة بهم في مراحل محددة.
 
-For example, the [`created`](../api/#created) hook can be used to run code after an instance is created:
+على سبيل المثال، الخطاف  [`created`](../api/#created) يمكن استخدامه لتشغيل كود برمجي بعد إنشاء الكائن بنجاح:
 
 ```js
 new Vue({
@@ -141,13 +143,12 @@ new Vue({
 })
 // => "a is: 1"
 ```
+يوجد ايضاً خطافات اخرى والتي يتم استدعائها في مراحل مختلفة من دورة حياة الكائن، مثل [`mounted`](../api/#mounted)، [`updated`](../api/#updated) و [`destroyed`](../api/#destroyed). جميع خطافات دورة الحياة يتم الاشارة اليها باستخدام `this` الخاص بالكائن والتي تشير الى كائن Vue الذي يستدعيها.
 
-There are also other hooks which will be called at different stages of the instance's lifecycle, such as [`mounted`](../api/#mounted), [`updated`](../api/#updated), and [`destroyed`](../api/#destroyed). All lifecycle hooks are called with their `this` context pointing to the Vue instance invoking it.
+لا تقم باستخدام [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) على احد خصائص الخيارات او دالة مرجعية، مثل `created: () => console.log(this.a)` او `vm.$watch('a', newValue => this.myMethod())`. نظراً لان دالة السهم `arrow function` لا تحتوي على `this`، `this` سوف يتم معاملتها مثل اي متغير اخر وسيتم البحث عنه بشكل معجمي من خلال النطاقات الرئيسية حتى يتم العقور عليه وغالباً ما ينتج عنه أخطاء مثل `Uncaught TypeError: Cannot read property of undefined` او `Uncaught TypeError: this.myMethod is not a function`.
 
-<p class="tip">Don't use [arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) on an options property or callback, such as `created: () => console.log(this.a)` or `vm.$watch('a', newValue => this.myMethod())`. Since an arrow function doesn't have a `this`, `this` will be treated as any other variable and lexically looked up through parent scopes until found, often resulting in errors such as `Uncaught TypeError: Cannot read property of undefined` or `Uncaught TypeError: this.myMethod is not a function`.</p>
+## مخطط دورة الحياة
 
-## Lifecycle Diagram
-
-Below is a diagram for the instance lifecycle. You don't need to fully understand everything going on right now, but as you learn and build more, it will be a useful reference.
+بالاسفل يوجد مخطط لدورة حياة الكائن. ليس عليك ان تفهم كل ما يحدث في الوقت الحالي، ولكن عندما تتعلم ستبني المزيد من المعرفة، يمكنك ان تعتبره كمرجع مفيد.
 
 ![The Vue Instance Lifecycle](/images/lifecycle.png)

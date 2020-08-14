@@ -1,16 +1,20 @@
 ---
-title: Routing
-type: guide
+title: الموجه
+type: ارشاد
 order: 501
 ---
 
-## Official Router
+<h2 dir="rtl">الموجه الرسمي</h2>
 
-For most Single Page Applications, it's recommended to use the officially-supported [vue-router library](https://github.com/vuejs/vue-router). For more details, see vue-router's [documentation](https://router.vuejs.org/).
+<p dir="rtl">
+  بالنسبة لمعظم تطبيقات الصفحة الواحدة ، يوصى باستخدام تنسيق <a href="https://github.com/vuejs/vue-router">مكتبة vue-router</a>. للمزيد من التفاصيل, انظر إلى <a href="https://router.vuejs.org">توثيق</a> vue-router
+</p>
 
-## Simple Routing From Scratch
+<h2 dir="rtl">موجه بسيط من الصفر</h2>
 
-If you only need very simple routing and do not wish to involve a full-featured router library, you can do so by dynamically rendering a page-level component like this:
+<p dir="rtl">
+إذا كنت تحتاج فقط إلى موجه بسيط للغاية ولا ترغب في تضمين مكتبة التوجيه كاملة الميزات ، فيمكنك القيام بذلك عن طريق عرض مكون على مستوى الصفحة ديناميكيًا مثل هذا:
+</p>
 
 ``` js
 const NotFound = { template: '<p>Page not found</p>' }
@@ -36,8 +40,13 @@ new Vue({
 })
 ```
 
-Combined with the HTML5 History API, you can build a very basic but fully-functional client-side router. To see that in practice, check out [this example app](https://github.com/chrisvfritz/vue-2.0-simple-routing-example).
+<p dir="rtl">
+بالاقتران مع HTML5 History API ، يمكنك إنشاء موجه أساسي جدًا ولكنه يعمل بكامل طاقته من جانب العميل. لمعرفة ذلك عمليًا ، تحقق من <a href="https://github.com/chrisvfritz/vue-2.0-simple-routing-example">مثال التطبيق هذا</a>
+</p>  
 
-## Integrating 3rd-Party Routers
-
-If there's a 3rd-party router you prefer to use, such as [Page.js](https://github.com/visionmedia/page.js) or [Director](https://github.com/flatiron/director), integration is [similarly easy](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs). Here's a [complete example](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs) using Page.js.
+<h2 dir="rtl">دمج أجهزة توجيه الطرف الثالث</h2>
+<p dir="rtl">
+  إذا كنت تفضل استخدام جهاز توجيه تابع لجهة خارجية ، مثل <a href="https://github.com/visionmedia/page.js">Page.js</a> أو <a href="https://github.com/flatiron/director">مخرج</a>، التكامل
+  <a href="https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs">سهل بالمثل</a>. إليك
+  <a href="https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs">مثال كامل</a> باستخدام Page.js.
+</p>

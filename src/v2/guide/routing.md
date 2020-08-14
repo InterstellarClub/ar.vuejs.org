@@ -38,7 +38,7 @@ new Vue({
 })
 ```
 
-بالاقتران مع HTML5 History API ، يمكنك إنشاء موجه أساسي جدًا ولكنه يعمل بكامل طاقته من جانب العميل. لمعرفة ذلك عمليًا ، تحقق من <a href="https://github.com/chrisvfritz/vue-2.0-simple-routing-example">مثال التطبيق هذا</a>
+بالاقتران مع HTML5 تاريخ API ، يمكنك إنشاء موجه أساسي جدًا ولكنه يعمل بكامل طاقته من جانب العميل. لمعرفة ذلك عمليًا ، تحقق من [مثال التطبيق هذا](https://github.com/chrisvfritz/vue-2.0-simple-routing-example)
 
 <h2 dir="rtl">دمج أجهزة توجيه الطرف الثالث</h2>
   إذا كنت تفضل استخدام جهاز توجيه تابع لجهة خارجية ، مثل <a href="https://github.com/visionmedia/page.js">Page.js</a> أو <a href="https://github.com/flatiron/director">مخرج</a>، التكامل

@@ -6,7 +6,6 @@ order: 501
 
 # المٌوجه الرسمي
 
-<p dir="rtl">
   بالنسبة لمعظم تطبيقات الصفحة الواحدة ، يوصى باستخدام تنسيق <a href="https://github.com/vuejs/vue-router">مكتبة vue-router</a>. للمزيد من التفاصيل, انظر إلى <a href="https://router.vuejs.org">توثيق</a> vue-router
 </p>
 

@@ -38,7 +38,6 @@ new Vue({
 })
 ```
 
-<p dir="rtl">
 بالاقتران مع HTML5 History API ، يمكنك إنشاء موجه أساسي جدًا ولكنه يعمل بكامل طاقته من جانب العميل. لمعرفة ذلك عمليًا ، تحقق من <a href="https://github.com/chrisvfritz/vue-2.0-simple-routing-example">مثال التطبيق هذا</a>
 </p>  
 

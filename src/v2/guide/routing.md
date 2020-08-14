@@ -6,7 +6,7 @@ order: 501
 
 # المٌوجه الرسمي
 
-  بالنسبة لمعظم تطبيقات الصفحة الواحدة ، يوصى باستخدام تنسيق <a href="https://github.com/vuejs/vue-router">مكتبة vue-router</a>. للمزيد من التفاصيل, انظر إلى <a href="https://router.vuejs.org">توثيق</a> vue-router
+  بالنسبة لمعظم تطبيقات الصفحة الواحدة ، يوصى باستخدام تنسيق [vue-router مكتبة](https://github.com/vuejs/vue-router). للمزيد من التفاصيل, انظر إلى [توثيق](https://router.vuejs.org/).
 
 ## موجه بسيط من الصفر
 

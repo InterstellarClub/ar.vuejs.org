@@ -38,6 +38,6 @@ new Vue({
 
 بالاقتران مع HTML5 تاريخ API ، يمكنك إنشاء موجه أساسي جدًا ولكنه يعمل بكامل طاقته من جانب العميل. لمعرفة ذلك عمليًا ، تحقق من [مثال التطبيق هذا](https://github.com/chrisvfritz/vue-2.0-simple-routing-example)
 
-## دمج أجهزة توجيه الطرف الثالث
+## الدمج مع حزم التوجيه الاخرى
 
 إذا كنت تفضل استخدام جهاز توجيه تابع لجهة خارجية ، مثل [Page.js](https://github.com/visionmedia/page.js) أو [مخرج](https://github.com/flatiron/director)، التكامل [سهل بالمثل](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs). إليك [مثال كامل](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs باستخدام Page.js.

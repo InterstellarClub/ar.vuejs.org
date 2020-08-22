@@ -1,5 +1,5 @@
 ---
-title: الموجه
+title: التوجيه
 type: guide
 order: 501
 ---
@@ -36,7 +36,7 @@ new Vue({
 })
 ```
 
-بالاقتران مع HTML5 History API ، يمكنك إنشاء موجه بدائي جدًا ولكنه يعمل بكامل طاقته من جانب العميل. لرؤية ذلك عمليًا ، تحقق من [مثال التطبيق هذا](https://github.com/chrisvfritz/vue-2.0-simple-routing-example).
+بالاقتران مع HTML5 History API ، يمكنك إنشاء موجه بسيط ولكنه يعمل بكامل طاقته من جانب العميل. لرؤية ذلك عمليًا ، تحقق من [مثال التطبيق هذا](https://github.com/chrisvfritz/vue-2.0-simple-routing-example).
 
 ## الدمج مع حزم التوجيه الاخرى
 

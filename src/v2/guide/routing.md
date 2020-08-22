@@ -1,6 +1,6 @@
 ---
 title: الموجه
-type: دليل
+type: guide
 order: 501
 ---
 

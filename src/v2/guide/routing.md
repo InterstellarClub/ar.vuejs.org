@@ -1,16 +1,16 @@
 ---
-title: Routing
+title: التوجيه
 type: guide
 order: 501
 ---
 
-## Official Router
+# حزمة التوجيه الرسمية
 
-For most Single Page Applications, it's recommended to use the officially-supported [vue-router library](https://github.com/vuejs/vue-router). For more details, see vue-router's [documentation](https://router.vuejs.org/).
+  بالنسبة لمعظم تطبيقات الصفحة الواحدة ، يوصى باستخدام [حزمة التوجيه المدعمة رسمياً vue-router](https://github.com/vuejs/vue-router). لمزيد من التفاصيل، انظر إلى [وثائق حزمة التوجيه](https://router.vuejs.org/).
 
-## Simple Routing From Scratch
+## موجه بسيط من الصفر
 
-If you only need very simple routing and do not wish to involve a full-featured router library, you can do so by dynamically rendering a page-level component like this:
+إذا كنت تحتاج فقط إلى موجه بسيط للغاية ولا ترغب في تضمين مكتبة التوجيه كاملة الميزات ، فيمكنك القيام بذلك عن طريق عرض مكون على مستوى الصفحة ديناميكيًا مثل هذا:
 
 ``` js
 const NotFound = { template: '<p>Page not found</p>' }
@@ -36,8 +36,8 @@ new Vue({
 })
 ```
 
-Combined with the HTML5 History API, you can build a very basic but fully-functional client-side router. To see that in practice, check out [this example app](https://github.com/chrisvfritz/vue-2.0-simple-routing-example).
+بالاقتران مع HTML5 History API ، يمكنك إنشاء موجه بسيط ولكنه يعمل بكامل طاقته من جانب العميل. لرؤية ذلك عمليًا ، تحقق من [مثال التطبيق هذا](https://github.com/chrisvfritz/vue-2.0-simple-routing-example).
 
-## Integrating 3rd-Party Routers
+## الدمج مع حزم التوجيه الاخرى
 
-If there's a 3rd-party router you prefer to use, such as [Page.js](https://github.com/visionmedia/page.js) or [Director](https://github.com/flatiron/director), integration is [similarly easy](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs). Here's a [complete example](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs) using Page.js.
+إذا كنت تفضل استخدام حزمة توجيه اخرى ، مثل [Page.js](https://github.com/visionmedia/page.js) أو [Director](https://github.com/flatiron/director)، التكامل [سهل بشكل مشابه](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs). إليك [مثال كامل](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs باستخدام Page.js.

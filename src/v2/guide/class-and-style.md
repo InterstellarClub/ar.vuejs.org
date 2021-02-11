@@ -204,4 +204,4 @@ data: {
 ```
 هذا سوف قوم بمعالجة القيمة الاخيرة فقط في المصفوفة والتي يدعمها المستعرض. في هذا المثال، سوف يقوم بمعالجة `display: flex` للمستعرضات التي لا تدعم اصدار flexbox ذو البادئات
 
-This will only render the last value in the array which the browser supports. In this example, it will render `display: flex` for browsers that support the unprefixed version of flexbox.
+سيؤدي هذا فقط إلى عرض القيمة الأخيرة في المصفوفة التي يدعمها المتصفح. في هذا المثال ، سيتم عرض `display: flex` للمتصفحات التي تدعم الإصدار غير المثبت من flexbox.

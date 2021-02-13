@@ -107,7 +107,7 @@ Vue توفر [أدوات سطر الأوامر الرسمية](https://github.co
 
 ### وقت التشغيل + المفسر vs. وقت التشغيل فقط
 
-إذا أحتجت ترجمة القوالب في جهة العميل, سوف تحتاج المفسر  و البناء الكامل.
+إذا أحتجت ترجمة القوالب في جهة العميل، سوف تحتاج المفسر  و البناء الكامل.
 
 ``` js
 // هذا يتطلب المفسر
@@ -243,7 +243,7 @@ rollup({
 NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
 ```
 
-شاهد أيضاً [Production Deployment Tips](deployment.html).
+إطلع أيضاً على [Production Deployment Tips](deployment.html).
 
 ### CSP environments
 

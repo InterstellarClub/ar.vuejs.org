@@ -181,10 +181,10 @@ rollup({
 }
 ```
 
-### وضع التطوير / وضع الإنشاء
+### وضع التطوير / وضع الإنتاج
 
 Development/production modes are hard-coded for the UMD builds: the un-minified files are for development, and the minified files are for production.
-أوضاع التطوير/الإنشاء ثابتة في إنشاءات UMD: الملفات غير المصغرة للتطوير ، والملفات المصغرة للإنتاج. 
+أوضاع التطوير/الإنتاج ثابتة في إنشاءات UMD: الملفات غير المصغرة للتطوير ، والملفات المصغرة للإنتاج. 
 
 وحدات CommonJS و ES Module مخصصة للحزم ، لذلك لا نقدم إصدارات مصغرة لها. ستكون مسؤولاً عن تصغير الحزمة النهائية بنفسك.
 

@@ -61,7 +61,7 @@ Vue أيضاً متوفرة على [unpkg](https://unpkg.com/vue@{{vue_version}}
 
 ## NPM ( مدير حزم Node.js )
 
-NPM هي الأداة الموصى بإصتخدامها عند بناء تطبيقات كبيرة الحجم بإستخدام Vue. فهي تعمل جيداً مع أدوات التجميع مثل [Webpack](https://webpack.js.org/) و [Browserify](http://browserify.org/). Vue أيضاً توفر أدوات خاصة بالإصدار مثل [Single File Components](single-file-components.html).
+NPM هي الأداة الموصى بإستخدامها عند بناء تطبيقات كبيرة الحجم بإستخدام Vue. فهي تعمل جيداً مع أدوات التجميع مثل [Webpack](https://webpack.js.org/) و [Browserify](http://browserify.org/). Vue أيضاً توفر أدوات خاصة بالإصدار مثل [Single File Components](single-file-components.html).
 
 ``` bash
 # latest stable
@@ -93,7 +93,7 @@ Vue توفر [أدوات سطر الأوامر الرسمية](https://github.co
 
 - **المفسر**: الكود المسئول عن ترجمة قوالب الكلمات لدوال Javascript الخاصة الخاصة بالتصدير.
 
-- **Runtime**: code that is responsible for creating Vue instances, rendering and patching virtual DOM, etc. Basically everything minus the compiler.
+- **وقت التشغيل**: الشيفرة المسؤولة عن إنشاء نماذج Vue, قراءة و تصحيح و نموذج كائن المستند الإفتراضي, الخ. ببساطة كل شيء ماعدا المفسر.
 
 - **[UMD](https://github.com/umdjs/umd)**: UMD builds can be used directly in the browser via a `<script>` tag. The default file from jsDelivr CDN at [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue) is the Runtime + Compiler UMD build (`vue.js`).
 
@@ -103,7 +103,7 @@ Vue توفر [أدوات سطر الأوامر الرسمية](https://github.co
 
   - ESM for bundlers: intended for use with modern bundlers like [webpack 2](https://webpack.js.org) or [Rollup](https://rollupjs.org/). ESM format is designed to be statically analyzable so the bundlers can take advantage of that to perform "tree-shaking" and eliminate unused code from your final bundle. The default file for these bundlers (`pkg.module`) is the Runtime only ES Module build (`vue.runtime.esm.js`).
 
-  - ESM for browsers (2.6+ only): intended for direct imports in modern browsers via `<script type="module">`.
+  - ESM للمتصفحات (2.6 فقط و أعلى): معده للإدراجات المباشره في المتصفحات الحديثة عبر `<script type="module">` 
 
 ### وقت التشغيل + المفسر vs. وقت التشغيل فقط
 
@@ -183,7 +183,6 @@ rollup({
 
 ### وضع التطوير / وضع الإنتاج
 
-Development/production modes are hard-coded for the UMD builds: the un-minified files are for development, and the minified files are for production.
 أوضاع التطوير/الإنتاج ثابتة في إنشاءات UMD: الملفات غير المصغرة للتطوير ، والملفات المصغرة للإنتاج. 
 
 وحدات CommonJS و ES Module مخصصة للحزم ، لذلك لا نقدم إصدارات مصغرة لها. ستكون مسؤولاً عن تصغير الحزمة النهائية بنفسك.
@@ -200,7 +199,7 @@ module.exports = {
 }
 ```
 
-و لكن في حزمة الويب 3 أو أقل, ستحتاج إلى استخدام [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
+و لكن في "Webpack 3" أو أقل, ستحتاج إلى استخدام [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
 ``` js
 var webpack = require('webpack')
@@ -237,7 +236,7 @@ rollup({
 
 #### Browserify
 
-قم بتقديم تحويل [envify](https://github.com/hughsk/envify) عالمي إلى حزمتك.
+قم بتقديم تحويل [envify](https://github.com/hughsk/envify) عام إلى حزمتك.
 
 ``` bash
 NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js

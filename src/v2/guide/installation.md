@@ -157,7 +157,7 @@ rollup({
 
 #### Browserify
 
-أضف ملف `package.json` الخاص بمشروعك : 
+أضف الى ملف `package.json` الخاص بمشروعك : 
 
 ``` js
 {

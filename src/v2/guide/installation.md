@@ -157,7 +157,7 @@ rollup({
 
 #### Browserify
 
-أضف الى ملف `package.json` الخاص بمشروعك : 
+أضف إلى ملف `package.json` الخاص بمشروعك : 
 
 ``` js
 {
@@ -170,7 +170,7 @@ rollup({
 
 #### Parcel
 
-أضف الى ملف `package.json` الخاص بمشروعك : 
+أضف إلى ملف `package.json` الخاص بمشروعك : 
 
 ``` js
 {

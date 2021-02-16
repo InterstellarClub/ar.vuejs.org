@@ -61,7 +61,7 @@ Vue أيضاً متوفرة على [unpkg](https://unpkg.com/vue@{{vue_version}}
 
 ## NPM ( مدير حزم Node.js )
 
-NPM هي الأداة الموصى بإصتخدامها عند بناء تطبيقات كبيرة الحجم بإستخدام Vue. فهي تعمل جيداً مع أدوات التجميع مثل [Webpack](https://webpack.js.org/) و [Browserify](http://browserify.org/). Vue أيضاً توفر أدوات خاصة بالإصدار مثل [Single File Components](single-file-components.html).
+NPM هي الأداة الموصى بإستخدامها عند بناء تطبيقات كبيرة الحجم بإستخدام Vue. فهي تعمل جيداً مع أدوات التجميع مثل [Webpack](https://webpack.js.org/) و [Browserify](http://browserify.org/). Vue أيضاً توفر أدوات خاصة بالإصدار مثل [Single File Components](single-file-components.html).
 
 ``` bash
 # latest stable
@@ -89,11 +89,11 @@ Vue توفر [أدوات سطر الأوامر الرسمية](https://github.co
 
 ### مصطلحات
 
-- **الكامل**: الإصدارات التي تحتوي على كلِ من المترجم وبيئة العمل.
+- **الكامل**: الإصدارات التي تحتوي على كلِ من المفسر وبيئة العمل.
 
-- **المترجم**: الكود المسئول عن ترجمة قوالب الكلمات لدوال Javascript الخاصة الخاصة بالتصدير.
+- **المفسر**: الكود المسئول عن ترجمة قوالب الكلمات لدوال Javascript الخاصة الخاصة بالتصدير.
 
-- **Runtime**: code that is responsible for creating Vue instances, rendering and patching virtual DOM, etc. Basically everything minus the compiler.
+- **وقت التشغيل**: الشيفرة المسؤولة عن إنشاء نماذج Vue, قراءة و تصحيح و نموذج كائن المستند الإفتراضي, الخ. ببساطة كل شيء ماعدا المفسر.
 
 - **[UMD](https://github.com/umdjs/umd)**: UMD builds can be used directly in the browser via a `<script>` tag. The default file from jsDelivr CDN at [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue) is the Runtime + Compiler UMD build (`vue.js`).
 
@@ -103,19 +103,19 @@ Vue توفر [أدوات سطر الأوامر الرسمية](https://github.co
 
   - ESM for bundlers: intended for use with modern bundlers like [webpack 2](https://webpack.js.org) or [Rollup](https://rollupjs.org/). ESM format is designed to be statically analyzable so the bundlers can take advantage of that to perform "tree-shaking" and eliminate unused code from your final bundle. The default file for these bundlers (`pkg.module`) is the Runtime only ES Module build (`vue.runtime.esm.js`).
 
-  - ESM for browsers (2.6+ only): intended for direct imports in modern browsers via `<script type="module">`.
+  - ESM للمتصفحات (2.6 فقط و أعلى): معده للإدراجات المباشره في المتصفحات الحديثة عبر `<script type="module">` 
 
-### Runtime + Compiler vs. Runtime-only
+### وقت التشغيل + المفسر vs. وقت التشغيل فقط
 
-If you need to compile templates on the client (e.g. passing a string to the `template` option, or mounting to an element using its in-DOM HTML as the template), you will need the compiler and thus the full build:
+إذا أحتجت ترجمة القوالب في جهة العميل، سوف تحتاج المفسر  و البناء الكامل.
 
 ``` js
-// this requires the compiler
+// هذا يتطلب المفسر
 new Vue({
   template: '<div>{{ hi }}</div>'
 })
 
-// this does not
+// هذا لا يتطلب المفسر
 new Vue({
   render (h) {
     return h('div', this.hi)
@@ -123,9 +123,9 @@ new Vue({
 })
 ```
 
-When using `vue-loader` or `vueify`, templates inside `*.vue` files are pre-compiled into JavaScript at build time. You don't really need the compiler in the final bundle, and can therefore use the runtime-only build.
+عند إستخدام `vue-loader` أو `vueify`, القوالب بداخل ملفات `*.vue` تكون مترجمة من قبل داخل JavaScript في وقت البناء. أنت لا تحتاج المفسر في الحزمة النهائية,و ,و بالتالي يمكنك إستخدام بناء وقت-التشغيل فقط. 
 
-Since the runtime-only builds are roughly 30% lighter-weight than their full-build counterparts, you should use it whenever you can. If you still wish to use the full build instead, you need to configure an alias in your bundler:
+نظرًا لأن إصدارات وقت التشغيل فقط أقل مساحة بنسبة 30 ٪ تقريبًا من نظيراتها كاملة الإنشاء ، فيجب عليك استخدامها كلما استطعت. إذا كنت لا تزال ترغب في استخدام الإصدار الكامل بدلاً من ذلك ، فأنت بحاجة إلى تكوين اسم مستعار في الحزمة الخاصة بك:
 
 #### Webpack
 
@@ -157,7 +157,7 @@ rollup({
 
 #### Browserify
 
-Add to your project's `package.json`:
+أضف إلى ملف `package.json` الخاص بمشروعك : 
 
 ``` js
 {
@@ -170,7 +170,7 @@ Add to your project's `package.json`:
 
 #### Parcel
 
-Add to your project's `package.json`:
+أضف إلى ملف `package.json` الخاص بمشروعك : 
 
 ``` js
 {
@@ -181,17 +181,17 @@ Add to your project's `package.json`:
 }
 ```
 
-### Development vs. Production Mode
+### وضع التطوير / وضع الإنتاج
 
-Development/production modes are hard-coded for the UMD builds: the un-minified files are for development, and the minified files are for production.
+أوضاع التطوير/الإنتاج ثابتة في إنشاءات UMD: الملفات غير المصغرة للتطوير ، والملفات المصغرة للإنتاج. 
 
-CommonJS and ES Module builds are intended for bundlers, therefore we don't provide minified versions for them. You will be responsible for minifying the final bundle yourself.
+وحدات CommonJS و ES Module مخصصة للحزم ، لذلك لا نقدم إصدارات مصغرة لها. ستكون مسؤولاً عن تصغير الحزمة النهائية بنفسك.
 
-CommonJS and ES Module builds also preserve raw checks for `process.env.NODE_ENV` to determine the mode they should run in. You should use appropriate bundler configurations to replace these environment variables in order to control which mode Vue will run in. Replacing `process.env.NODE_ENV` with string literals also allows minifiers like UglifyJS to completely drop the development-only code blocks, reducing final file size.
+تحافظ إصدارات CommonJS و ES Module أيضًا على عمليات التحقق الأولية لـ `process.env.NODE_ENV` لتحديد الوضع الذي يجب أن تعمل فيه. يجب استخدام حزم المفسر المناسبة لاستبدال متغيرات البيئة هذه للتحكم في الوضع الذي سيتم تشغيل Vue فيه. تسمح عملية process.env.NODE_ENV` التي تحتوي على نصوص حرفية أيضًا للمُصغرات مثل UglifyJS بإسقاط كتل التعليمات البرمجية للتطوير فقط ، مما يقلل من حجم الملف النهائي.
 
 #### Webpack
 
-In Webpack 4+, you can use the `mode` option:
+في حزمة الويب 4+, يمكنك إستخدام إختيار ال `mode`:
 
 ``` js
 module.exports = {
@@ -199,7 +199,7 @@ module.exports = {
 }
 ```
 
-But in Webpack 3 and earlier, you'll need to use [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
+و لكن في "Webpack 3" أو أقل, ستحتاج إلى استخدام [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
 ``` js
 var webpack = require('webpack')
@@ -219,7 +219,7 @@ module.exports = {
 
 #### Rollup
 
-Use [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
+إستخدم [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
 
 ``` js
 const replace = require('rollup-plugin-replace')
@@ -236,19 +236,19 @@ rollup({
 
 #### Browserify
 
-Apply a global [envify](https://github.com/hughsk/envify) transform to your bundle.
+قم بتقديم تحويل [envify](https://github.com/hughsk/envify) عام إلى حزمتك.
 
 ``` bash
 NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
 ```
 
-Also see [Production Deployment Tips](deployment.html).
+إطلع أيضاً على [Production Deployment Tips](deployment.html).
 
 ### CSP environments
 
-Some environments, such as Google Chrome Apps, enforce Content Security Policy (CSP), which prohibits the use of `new Function()` for evaluating expressions. The full build depends on this feature to compile templates, so is unusable in these environments.
+تفرض بعض البيئات ، مثل Google Chrome تطبيقات ، سياسة أمان المحتوى (CSP) ، والتي تحظر استخدام `` الوظيفة الجديدة () '' لتقييم التعبيرات. يعتمد البناء الكامل على هذه الميزة لتجميع القوالب ، لذا فهو غير قابل للاستخدام في هذه البيئات.
 
-On the other hand, the runtime-only build is fully CSP-compliant. When using the runtime-only build with [Webpack + vue-loader](https://github.com/vuejs-templates/webpack-simple) or [Browserify + vueify](https://github.com/vuejs-templates/browserify-simple), your templates will be precompiled into `render` functions which work perfectly in CSP environments.
+من ناحية أخرى ، فإن بناء وقت التشغيل فقط متوافق تمامًا مع CSP. عند استخدام إصدار وقت التشغيل فقط مع [Webpack + vue-loader] (https://github.com/vuejs-templates/webpack-simple) أو [Browserify + vueify] (https://github.com/vuejs-templates / browserify-simple) ، سيتم تجميع القوالب الخاصة بك مسبقًا في وظائف "تقديم" التي تعمل بشكل مثالي في بيئات CSP.
 
 ## إصدار التطوير
 

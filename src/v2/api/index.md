@@ -152,7 +152,7 @@ type: api
 
   Define custom key alias(es) for `v-on`.
 
-### performance
+### الأداء
 
 > جديد في الاصدار 2.2.0+
 
@@ -162,7 +162,7 @@ type: api
 
 - **طريقة الاستخدام**:
 
-  Set this to `true` to enable component init, compile, render and patch performance tracing in the browser devtool performance/timeline panel. Only works in development mode and in browsers that support the [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API.
+  قم بتعيين هذا على "صواب" لتمكين تتبع أداء المكون، وتجميع، وتقديم، وتصحيحها في لوحة أداء/تسلسل زمني لأداة المستعرض. يعمل فقط في وضع التطوير وفي المستعرضات التي تدعم [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API.
 
 ### productionTip
 
